@@ -3,35 +3,26 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <html>
 <head>
-    <title>Registrar Usuario | Tiendita</title>
+    <title>Registrar Pelicula | Cartelera</title>
     <link rel="stylesheet" href="${context}/assets/plugins/bootstrap/css/bootstrap.min.css">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 </head>
 <body>
 <h1>Registrar Usuario</h1>
-<form action="${context}/createUser" method="POST">
+<form action="${context}/createPelicula" method="POST">
     <input type="hidden" value="create" name="action">
-
-    <label>ID de la Pelicula:</label>
-    <input class="form-control" type="text" name="id" />
+    <label>Nombre:</label>
+    <input class="form-control" type="text" name="nombre" value="${ info_pelis.nombre }" />
     <br>
-
-    <label>Nombre de la Pelicula:</label>
-    <input class="form-control" type="text" name="nombre" />
-    <br>
-
     <label>Descripcion:</label>
-    <input class="form-control" type="text" name="descripcion" />
+    <input class="form-control" type="text" name="descripcion" value="${ user.idPerson.lastname }" />
     <br>
-
-    <label>Fecha Estreno:</label>
-    <input class="form-control" type="number" name="fecha_estreno" />
+    <label>Fecha de estreno:</label>
+    <input class="form-control" type="text" name="fecha_estreno" value="${ info_pelis.fecha_estreno }" />
     <br>
-
     <label>Recaudacion:</label>
-    <input class="form-control" type="email" name="recaudacion" />
+    <input class="form-control" type="number" name="recaudacion" value="${ info_pelis.recaudacion }" />
     <br>
-
 
     <button type="button" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</button>
     <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</button>

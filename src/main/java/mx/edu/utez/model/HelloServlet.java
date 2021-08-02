@@ -1,4 +1,4 @@
-package mx.edu.utez;
+package mx.edu.utez.model;
 
 import java.io.*;
 import javax.servlet.http.*;

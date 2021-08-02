@@ -7,23 +7,24 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <html>
 <head>
-    <title>Listado de usuarios</title>
+    <title>Lista de peliculas</title>
     <link rel="stylesheet" href="${context}/assets/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${context}/assets/dist/css/styles.css">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 </head>
 <body>
-<a href="${context}/views/user/register.jsp" class="btn btn-outline-success"><i class="fas fa-plus"></i> Agregar Pelicula</a>
+<a href="${context}/views/pelicula/register.jsp" class="btn btn-outline-success"><i class="fas fa-plus"></i> Agregar pelicula</a>
 <table class="table">
     <thead class="table-dark">
     <tr>
-        <th>#</th>
+        <th>No.</th>
         <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Fecha de estreno</th>
-        <th>Recaudación</th>
+        <th>Descripcion</th>
+        <th>Estreno</th>
+        <th>Recaudacion</th>
         <th>Estado</th>
     </tr>
     </thead>
@@ -32,10 +33,7 @@
         <tr>
             <td>${ estado.count }</td>
             <td>${ info_pelis.nombre }</td>
-            <td>${ info_pelis.descripcion }</td>
-            <td>${ info_pelis.fecha_estreno }</td>
-            <td>${ info_pelis.recaudacion }</td>
-            <td>${ info_pelis.estado }</td>
+            <td>${ user.email }</td>
             <td>
                 <c:if test="${ info_pelis.estado == 1 }">
                     <span class="badge rounded-pill bg-success">Activo</span>
@@ -47,7 +45,7 @@
             <td>
                 <c:if test="${ info_pelis.estado == 1 }">
                     <form action="${context}/getUserById" method="POST" style="display: inline;">
-                        <input type="hidden" name="action" value="getUserById">
+                        <input type="hidden" name="action" value="getPeliculaById">
                         <input type="hidden" name="id" value="${ info_pelis.id }">
                         <button type="submit" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Modificar</button>
                     </form>
@@ -70,7 +68,7 @@
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="id" id="id">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Eliminar pelicula</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Pelicula</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -95,16 +93,16 @@
             </div>
             <div class="modal-body">
                 <h5>Nombre:</h5>
-                <label>Demon Slayer</label>
+                <label>${ info_pelis.nombre }</label>
                 <br>
-                <h5>Fecha de estreno:</h5>
-                <label>2021-05-20</label>
+                <h5>Descripcion:</h5>
+                <label>${ info_pelis.descripcion }</label>
+                <br>
+                <h5>Fecha del estreno:</h5>
+                <label>${ info_pelis.fecha_estreno }</label>
                 <br>
                 <h5>Recaudacion:</h5>
-                <label>815000000</label>
-                <br>
-                <h5>Estado:</h5>
-                <label>1</label>
+                <label>${ info_pelis.recaudacion }</label>
 
             </div>
             <div class="modal-footer">
